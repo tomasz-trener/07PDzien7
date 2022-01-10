@@ -84,7 +84,17 @@ namespace P02AplikacjaZawodnicy.Views
             if (fs == null)
             {
                 var zaznaczony = (ZawodnikVM)lbDane.SelectedItem;
-                fs = new FrmSzczegoly(this, zaznaczony);
+                fs = new FrmSzczegoly(this, zaznaczony,TrybOkienka.Edycja);
+                fs.Show();
+            }
+        }
+
+        private void btnUsun_Click(object sender, EventArgs e)
+        {
+            if (fs == null)
+            {
+                var zaznaczony = (ZawodnikVM)lbDane.SelectedItem;
+                fs = new FrmSzczegoly(this, zaznaczony,TrybOkienka.Usuwanie);
                 fs.Show();
             }
         }

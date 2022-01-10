@@ -41,6 +41,7 @@ namespace P02AplikacjaZawodnicy.Views
             this.btnWygenerujPodsumowanie = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnEdytuj = new System.Windows.Forms.Button();
+            this.btnUsun = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartZawodnicy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,11 +137,22 @@ namespace P02AplikacjaZawodnicy.Views
             this.btnEdytuj.UseVisualStyleBackColor = true;
             this.btnEdytuj.Click += new System.EventHandler(this.btnEdytuj_Click);
             // 
+            // btnUsun
+            // 
+            this.btnUsun.Location = new System.Drawing.Point(188, 50);
+            this.btnUsun.Name = "btnUsun";
+            this.btnUsun.Size = new System.Drawing.Size(75, 23);
+            this.btnUsun.TabIndex = 9;
+            this.btnUsun.Text = "Usuń";
+            this.btnUsun.UseVisualStyleBackColor = true;
+            this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
+            // 
             // FrmStartowy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 351);
+            this.Controls.Add(this.btnUsun);
             this.Controls.Add(this.btnEdytuj);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.btnWygenerujPodsumowanie);
@@ -168,6 +180,7 @@ namespace P02AplikacjaZawodnicy.Views
         private System.Windows.Forms.Button btnWygenerujPodsumowanie;
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnEdytuj;
+        private System.Windows.Forms.Button btnUsun;
     }
 }
 

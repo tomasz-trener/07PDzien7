@@ -46,6 +46,12 @@ namespace P02AplikacjaZawodnicy.Operations
             zawodnicyRepository.EdytujZawodnika(z);
         }
 
+        public void UsunZawodnika(ZawodnikVM zv)
+        {
+            var z = KonwertujZawodnikVMnaZawodnik(zv);
+            zawodnicyRepository.UsunZawodnika(z.id_zawodnika);
+        } 
+
         public ZawodnikVM[] WygenerujRaportPDF()
         {
             ZawodnicyRepository zr = new ZawodnicyRepository();

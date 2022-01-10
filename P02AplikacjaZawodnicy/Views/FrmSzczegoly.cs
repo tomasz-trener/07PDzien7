@@ -12,10 +12,11 @@ using System.Windows.Forms;
 
 namespace P02AplikacjaZawodnicy.Views
 {
-    enum TrybOkienka
+    public enum TrybOkienka
     {
         Edycja,
-        Tworzenie
+        Tworzenie,
+        Usuwanie
     }
 
     public partial class FrmSzczegoly : Form
@@ -24,16 +25,7 @@ namespace P02AplikacjaZawodnicy.Views
         FrmStartowy fs;
         ZawodnikVM zawodnik; // null oznacza tryb dodawania, not null oznacza tryb edycji 
 
-        private TrybOkienka trybOkienka
-        {
-            get
-            {
-                if (zawodnik == null)
-                    return TrybOkienka.Tworzenie;
-                else
-                    return TrybOkienka.Edycja;
-            }
-        }
+        private TrybOkienka trybOkienka; 
 
         public FrmSzczegoly(FrmStartowy fs)
         {
@@ -41,8 +33,9 @@ namespace P02AplikacjaZawodnicy.Views
             this.fs = fs;
         }
 
-        public FrmSzczegoly(FrmStartowy fs, ZawodnikVM z) : this(fs)
+        public FrmSzczegoly(FrmStartowy fs, ZawodnikVM z, TrybOkienka trybOkienka) : this(fs)
         {
+            this.trybOkienka = trybOkienka;
             zawodnik = z;
             txtImie.Text = z.Imie;
             txtNazwisko.Text = z.Nazwisko;
@@ -53,6 +46,17 @@ namespace P02AplikacjaZawodnicy.Views
            
             txtWaga.Text = Convert.ToString(z.Waga);
             txtWzrost.Text = Convert.ToString(z.Wzrost);
+
+            if (trybOkienka== TrybOkienka.Usuwanie)
+            {
+                txtImie.Enabled = false;
+                txtNazwisko.Enabled = false;
+                txtKraj.Enabled = false;
+                txtWzrost.Enabled = false;
+                txtWaga.Enabled = false;
+                dtpDataUrodzenia.Enabled = false;
+                btnZapisz.Text = "Usuń";
+            }
         }
 
 
@@ -71,10 +75,25 @@ namespace P02AplikacjaZawodnicy.Views
             if (trybOkienka == TrybOkienka.Tworzenie)
             {
                 zawodnicyOperation.DodajZawodnika(zv);
-            }else if(trybOkienka == TrybOkienka.Edycja)
+            }
+            else if (trybOkienka == TrybOkienka.Edycja)
             {
                 zv.Id = zawodnik.Id;
                 zawodnicyOperation.EdytujZawodnika(zv);
+            }
+            else if (trybOkienka == TrybOkienka.Usuwanie)
+            {
+                DialogResult dr=
+                    MessageBox.Show($"Czy napewno chcesz zawodnika {zv.PodstawoweDane} ? ", "Potwierdzenie usunieca",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dr == DialogResult.Yes)
+                {
+                    zv.Id = zawodnik.Id;
+                    zawodnicyOperation.UsunZawodnika(zv);
+                }
+                else
+                    return;                        
             }
             else
                 throw new Exception("Nieznany tryb otwarcia okienka");

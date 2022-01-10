@@ -1,0 +1,13 @@
+﻿1
+
+Dodaj opcję usuwania zawodnika.
+Po zaznaczeniu zawodnika i wciśnięciu przyciusku usuń pojawia się okno szczegóły
+z wyszarzonymi wszystkimi polami i przyciskiem "usun"
+dopiero wciśnięcie usuń w formularzu szczegóły powoduje faktyczne usunięcie zawodnika z bazy i
+odświzenie formatki 
+
+- modyfikacja intefrensu głównego w formularzu startowym 
+- dodanie usuwania w warstwie repozytorium
+- dodanie usuwania w warstwiie operacji 
+- dodanie w enumeratorze opcji usun
+- modyfikacja formularza szczegoly

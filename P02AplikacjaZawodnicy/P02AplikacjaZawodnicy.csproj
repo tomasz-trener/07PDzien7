@@ -125,5 +125,8 @@
   <ItemGroup>
     <Folder Include="Tools\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Zadanie.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
