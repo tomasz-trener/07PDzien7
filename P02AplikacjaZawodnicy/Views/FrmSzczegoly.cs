@@ -56,6 +56,7 @@ namespace P02AplikacjaZawodnicy.Views
         private void StworzPrzyciskOpcji()
         {
             Button b = new Button();
+             
             b.Name = "btnOperacja";
             b.Location = new Point(181, 174);
             b.Size = new Size(75, 23);
