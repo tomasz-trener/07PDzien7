@@ -31,6 +31,8 @@ namespace P02AplikacjaZawodnicy.Views
         {
             InitializeComponent();
             this.fs = fs;
+            trybOkienka = TrybOkienka.Tworzenie;
+            StworzPrzyciskOpcji();
         }
 
         public FrmSzczegoly(FrmStartowy fs, ZawodnikVM z, TrybOkienka trybOkienka) : this(fs)
@@ -46,8 +48,20 @@ namespace P02AplikacjaZawodnicy.Views
            
             txtWaga.Text = Convert.ToString(z.Waga);
             txtWzrost.Text = Convert.ToString(z.Wzrost);
+            StworzPrzyciskOpcji();
 
-            if (trybOkienka== TrybOkienka.Usuwanie)
+
+        }
+
+        private void StworzPrzyciskOpcji()
+        {
+            Button b = new Button();
+            b.Name = "btnOperacja";
+            b.Location = new Point(181, 174);
+            b.Size = new Size(75, 23);
+            b.Click += new System.EventHandler(this.btnOperacja_Click);
+            Controls.Add(b);
+            if (trybOkienka == TrybOkienka.Usuwanie)
             {
                 txtImie.Enabled = false;
                 txtNazwisko.Enabled = false;
@@ -55,12 +69,19 @@ namespace P02AplikacjaZawodnicy.Views
                 txtWzrost.Enabled = false;
                 txtWaga.Enabled = false;
                 dtpDataUrodzenia.Enabled = false;
-                btnZapisz.Text = "Usuń";
+                b.Text = "Usuń";
+            }
+            else if (trybOkienka == TrybOkienka.Edycja)
+            {
+                b.Text = "Edytuj";
+            }
+            else if (trybOkienka == TrybOkienka.Tworzenie)
+            {
+                b.Text = "Stwórz";
             }
         }
 
-
-        private void btnZapisz_Click(object sender, EventArgs e)
+        private void btnOperacja_Click(object sender, EventArgs e)
         {
             ZawodnikVM zv = new ZawodnikVM()
             {

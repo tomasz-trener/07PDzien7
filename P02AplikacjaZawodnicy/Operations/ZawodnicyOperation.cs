@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace P02AplikacjaZawodnicy.Operations
 {
-    class ZawodnicyOperation
+    public class ZawodnicyOperation
     {
         ZawodnicyRepository zawodnicyRepository = new ZawodnicyRepository();
         public ZawodnikVM[] PodajZawodnikow()
@@ -38,6 +38,21 @@ namespace P02AplikacjaZawodnicy.Operations
         {
             var z = KonwertujZawodnikVMnaZawodnik(zv);
             zawodnicyRepository.DodajZawodnika(z);
+        }
+
+        public ZawodnikVM PodajZawodnika(int id)
+        {
+            var x= zawodnicyRepository.PodajZawodnika(id);
+            return new ZawodnikVM()
+            {
+                Id = x.id_zawodnika,
+                Imie = x.imie,
+                Nazwisko = x.nazwisko,
+                Kraj = x.kraj,
+                DataUrodzenia = x.data_ur,
+                Waga = x.waga,
+                Wzrost = x.wzrost
+            };
         }
 
         public void EdytujZawodnika(ZawodnikVM zv)

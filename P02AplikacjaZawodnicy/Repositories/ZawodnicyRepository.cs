@@ -45,5 +45,11 @@ namespace P02AplikacjaZawodnicy.Repositories
             db.Zawodnik.DeleteOnSubmit(doUsuniecia);
             db.SubmitChanges();
         }
+
+        public Zawodnik PodajZawodnika(int id)
+        {
+            ModelBazyDanychDataContext db = new ModelBazyDanychDataContext();
+            return db.Zawodnik.FirstOrDefault(x => x.id_zawodnika == id);
+        }
     }
 }

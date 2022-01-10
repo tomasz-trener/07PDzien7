@@ -41,7 +41,6 @@ namespace P02AplikacjaZawodnicy.Views
             this.txtWzrost = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpDataUrodzenia = new System.Windows.Forms.DateTimePicker();
-            this.btnZapisz = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -142,22 +141,11 @@ namespace P02AplikacjaZawodnicy.Views
             this.dtpDataUrodzenia.Size = new System.Drawing.Size(162, 20);
             this.dtpDataUrodzenia.TabIndex = 12;
             // 
-            // btnZapisz
-            // 
-            this.btnZapisz.Location = new System.Drawing.Point(181, 174);
-            this.btnZapisz.Name = "btnZapisz";
-            this.btnZapisz.Size = new System.Drawing.Size(75, 23);
-            this.btnZapisz.TabIndex = 13;
-            this.btnZapisz.Text = "Zapisz";
-            this.btnZapisz.UseVisualStyleBackColor = true;
-            this.btnZapisz.Click += new System.EventHandler(this.btnZapisz_Click);
-            // 
             // FrmSzczegoly
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(283, 207);
-            this.Controls.Add(this.btnZapisz);
+            this.ClientSize = new System.Drawing.Size(278, 207);
             this.Controls.Add(this.dtpDataUrodzenia);
             this.Controls.Add(this.txtWzrost);
             this.Controls.Add(this.label6);
@@ -192,6 +180,5 @@ namespace P02AplikacjaZawodnicy.Views
         private System.Windows.Forms.TextBox txtWzrost;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpDataUrodzenia;
-        private System.Windows.Forms.Button btnZapisz;
     }
 }

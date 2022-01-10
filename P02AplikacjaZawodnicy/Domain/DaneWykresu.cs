@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace P02AplikacjaZawodnicy.Domain
 {
-    class DaneWykresu
+    public class DaneWykresu
     {
         public string[] X;
         public double[] Y;
