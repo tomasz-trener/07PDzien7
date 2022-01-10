@@ -22,5 +22,20 @@ namespace P02AplikacjaZawodnicy.Repositories
             db.Zawodnik.InsertOnSubmit(z);
             db.SubmitChanges();
         }
+
+        public void EdytujZawodnika(Zawodnik z)
+        {
+            ModelBazyDanychDataContext db = new ModelBazyDanychDataContext();
+            var doEdycji = db.Zawodnik.FirstOrDefault(x => x.id_zawodnika == z.id_zawodnika);
+
+            doEdycji.imie = z.imie;
+            doEdycji.nazwisko = z.nazwisko;
+            doEdycji.kraj = z.kraj;
+            doEdycji.data_ur = z.data_ur;
+            doEdycji.wzrost = z.wzrost;
+            doEdycji.waga = z.waga;
+
+            db.SubmitChanges();
+        }
     }
 }

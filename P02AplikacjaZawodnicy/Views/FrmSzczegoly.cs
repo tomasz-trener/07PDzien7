@@ -12,15 +12,49 @@ using System.Windows.Forms;
 
 namespace P02AplikacjaZawodnicy.Views
 {
+    enum TrybOkienka
+    {
+        Edycja,
+        Tworzenie
+    }
+
     public partial class FrmSzczegoly : Form
     {
         ZawodnicyOperation zawodnicyOperation = new ZawodnicyOperation();
         FrmStartowy fs;
+        ZawodnikVM zawodnik; // null oznacza tryb dodawania, not null oznacza tryb edycji 
+
+        private TrybOkienka trybOkienka
+        {
+            get
+            {
+                if (zawodnik == null)
+                    return TrybOkienka.Tworzenie;
+                else
+                    return TrybOkienka.Edycja;
+            }
+        }
+
         public FrmSzczegoly(FrmStartowy fs)
         {
             InitializeComponent();
             this.fs = fs;
         }
+
+        public FrmSzczegoly(FrmStartowy fs, ZawodnikVM z) : this(fs)
+        {
+            zawodnik = z;
+            txtImie.Text = z.Imie;
+            txtNazwisko.Text = z.Nazwisko;
+            txtKraj.Text = z.Kraj;
+            
+            if(z.DataUrodzenia != null)
+                dtpDataUrodzenia.Value = (DateTime)z.DataUrodzenia;
+           
+            txtWaga.Text = Convert.ToString(z.Waga);
+            txtWzrost.Text = Convert.ToString(z.Wzrost);
+        }
+
 
         private void btnZapisz_Click(object sender, EventArgs e)
         {
@@ -34,7 +68,17 @@ namespace P02AplikacjaZawodnicy.Views
                 Wzrost = Convert.ToInt32(txtWzrost.Text)
             };
 
-            zawodnicyOperation.DodajZawodnika(zv);
+            if (trybOkienka == TrybOkienka.Tworzenie)
+            {
+                zawodnicyOperation.DodajZawodnika(zv);
+            }else if(trybOkienka == TrybOkienka.Edycja)
+            {
+                zv.Id = zawodnik.Id;
+                zawodnicyOperation.EdytujZawodnika(zv);
+            }
+            else
+                throw new Exception("Nieznany tryb otwarcia okienka");
+           
 
             this.Close();
             fs.OdswiezDane();       

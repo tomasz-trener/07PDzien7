@@ -1,5 +1,6 @@
 ﻿using P02AplikacjaZawodnicy.Operations;
 using P02AplikacjaZawodnicy.Repositories;
+using P02AplikacjaZawodnicy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,8 +76,17 @@ namespace P02AplikacjaZawodnicy.Views
             {
                 fs = new FrmSzczegoly(this);
                 fs.Show();
+            }  
+        }
+
+        private void btnEdytuj_Click(object sender, EventArgs e)
+        {
+            if (fs == null)
+            {
+                var zaznaczony = (ZawodnikVM)lbDane.SelectedItem;
+                fs = new FrmSzczegoly(this, zaznaczony);
+                fs.Show();
             }
-            
         }
     }
 }

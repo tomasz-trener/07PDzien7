@@ -23,26 +23,27 @@ namespace P02AplikacjaZawodnicy.Operations
 
             return zawodnicy.Select(x => new ZawodnikVM()
             {
+
                 Id = x.id_zawodnika,
                 Imie = x.imie,
                 Nazwisko = x.nazwisko,
-                Kraj = x.kraj
+                Kraj = x.kraj,
+                DataUrodzenia = x.data_ur,
+                Waga = x.waga,
+                Wzrost = x.wzrost
             }).ToArray();
         }
 
         public void DodajZawodnika(ZawodnikVM zv)
         {
-            Zawodnik z = new Zawodnik()
-            {
-                imie = zv.Imie,
-                nazwisko = zv.Nazwisko,
-                kraj = zv.Kraj,
-                data_ur = zv.DataUrodzenia,
-                waga = zv.Waga,
-                wzrost = zv.Wzrost
-            };
-
+            var z = KonwertujZawodnikVMnaZawodnik(zv);
             zawodnicyRepository.DodajZawodnika(z);
+        }
+
+        public void EdytujZawodnika(ZawodnikVM zv)
+        {
+            var z = KonwertujZawodnikVMnaZawodnik(zv);
+            zawodnicyRepository.EdytujZawodnika(z);
         }
 
         public ZawodnikVM[] WygenerujRaportPDF()
@@ -76,6 +77,24 @@ namespace P02AplikacjaZawodnicy.Operations
             daneWykresu.X = grupy.Select(x => x.Kraj).ToArray();
             daneWykresu.Y = grupy.Select(x => (double)x.Wzrost).ToArray();
             return daneWykresu;
+        }
+
+        private Zawodnik KonwertujZawodnikVMnaZawodnik(ZawodnikVM zv)
+        {
+            Zawodnik z = new Zawodnik()
+            {
+                imie = zv.Imie,
+                nazwisko = zv.Nazwisko,
+                kraj = zv.Kraj,
+                data_ur = zv.DataUrodzenia,
+                waga = zv.Waga,
+                wzrost = zv.Wzrost
+            };
+
+            if (zv.Id != null)
+                z.id_zawodnika = (int)zv.Id;
+
+            return z;
         }
     }
 }

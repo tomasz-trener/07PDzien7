@@ -40,13 +40,14 @@ namespace P02AplikacjaZawodnicy.Views
             this.chartZawodnicy = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnWygenerujPodsumowanie = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
+            this.btnEdytuj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartZawodnicy)).BeginInit();
             this.SuspendLayout();
             // 
             // lbDane
             // 
             this.lbDane.FormattingEnabled = true;
-            this.lbDane.Location = new System.Drawing.Point(22, 50);
+            this.lbDane.Location = new System.Drawing.Point(22, 78);
             this.lbDane.Name = "lbDane";
             this.lbDane.Size = new System.Drawing.Size(241, 225);
             this.lbDane.TabIndex = 0;
@@ -73,7 +74,7 @@ namespace P02AplikacjaZawodnicy.Views
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(286, 50);
+            this.webBrowser1.Location = new System.Drawing.Point(286, 78);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(237, 225);
@@ -81,7 +82,7 @@ namespace P02AplikacjaZawodnicy.Views
             // 
             // btnStrona
             // 
-            this.btnStrona.Location = new System.Drawing.Point(286, 21);
+            this.btnStrona.Location = new System.Drawing.Point(286, 49);
             this.btnStrona.Name = "btnStrona";
             this.btnStrona.Size = new System.Drawing.Size(237, 23);
             this.btnStrona.TabIndex = 4;
@@ -95,7 +96,7 @@ namespace P02AplikacjaZawodnicy.Views
             this.chartZawodnicy.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartZawodnicy.Legends.Add(legend1);
-            this.chartZawodnicy.Location = new System.Drawing.Point(542, 50);
+            this.chartZawodnicy.Location = new System.Drawing.Point(542, 78);
             this.chartZawodnicy.Name = "chartZawodnicy";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -107,7 +108,7 @@ namespace P02AplikacjaZawodnicy.Views
             // 
             // btnWygenerujPodsumowanie
             // 
-            this.btnWygenerujPodsumowanie.Location = new System.Drawing.Point(542, 21);
+            this.btnWygenerujPodsumowanie.Location = new System.Drawing.Point(542, 49);
             this.btnWygenerujPodsumowanie.Name = "btnWygenerujPodsumowanie";
             this.btnWygenerujPodsumowanie.Size = new System.Drawing.Size(148, 23);
             this.btnWygenerujPodsumowanie.TabIndex = 6;
@@ -125,11 +126,22 @@ namespace P02AplikacjaZawodnicy.Views
             this.btnDodaj.UseVisualStyleBackColor = true;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
+            // btnEdytuj
+            // 
+            this.btnEdytuj.Location = new System.Drawing.Point(103, 48);
+            this.btnEdytuj.Name = "btnEdytuj";
+            this.btnEdytuj.Size = new System.Drawing.Size(75, 23);
+            this.btnEdytuj.TabIndex = 8;
+            this.btnEdytuj.Text = "Edytuj";
+            this.btnEdytuj.UseVisualStyleBackColor = true;
+            this.btnEdytuj.Click += new System.EventHandler(this.btnEdytuj_Click);
+            // 
             // FrmStartowy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 298);
+            this.ClientSize = new System.Drawing.Size(915, 351);
+            this.Controls.Add(this.btnEdytuj);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.btnWygenerujPodsumowanie);
             this.Controls.Add(this.chartZawodnicy);
@@ -155,6 +167,7 @@ namespace P02AplikacjaZawodnicy.Views
         private System.Windows.Forms.DataVisualization.Charting.Chart chartZawodnicy;
         private System.Windows.Forms.Button btnWygenerujPodsumowanie;
         private System.Windows.Forms.Button btnDodaj;
+        private System.Windows.Forms.Button btnEdytuj;
     }
 }
 
