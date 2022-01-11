@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace P02AplikacjaZawodnicy.Views
-{
+{ 
     public partial class FrmStartowy : Form
     {
         ZawodnicyOperation zawodnicyOperation = new ZawodnicyOperation();
